@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router-dom';
 import { history } from './../store/configureStore';
 
+import Header from './Header';
 import ListPage from './ListPage';
 
 class App extends Component {
@@ -16,8 +17,7 @@ class App extends Component {
     return (
       <ConnectedRouter history={history}>
         <div>
-          Placeholder like woah.
-          {/*<Header />*/}
+          <Header />
           <Route exact path='/' component={ListPage} />
           {/*<Route path='/login' component={Login} />*/}
           {/*<Route path='/colorboxes' component={ColorBoxes} colors={data} removeBox={this.props.actions.removeColor} rotation={rotation} setRotation={this.props.actions.setRotation}  />*/}

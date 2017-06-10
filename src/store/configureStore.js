@@ -6,7 +6,6 @@ import { routerMiddleware } from 'react-router-redux'
 export const history = createHistory();
 
 export function configureStore (initialState) {
-  console.log(history);
   const store = createStore(
     rootReducer,
     initialState,
