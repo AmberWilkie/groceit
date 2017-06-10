@@ -1,42 +1,65 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as Actions from '../actions';
-import '../App.css';
+import React from 'react';
 import { ConnectedRouter } from 'react-router-redux';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom'
 import { history } from './../store/configureStore';
+import { connect } from 'react-redux';
 
-import Header from './Header';
-import ListPage from './ListPage';
+import Header from '../containers/Header';
+import Login from '../containers/Login';
+import ListPage from '../containers/ListPage';
+import Recipes from '../containers/Recipes';
 
-class App extends Component {
+const PrivateRoute = ({component: Component, authenticated, ...props}) => {
+  return (
+    <Route
+      {...props}
+      render={(props) => authenticated === true
+        ? <Component {...props} />
+        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+    />
+  );
+};
+
+const PublicRoute = ({component: Component, authenticated, ...props}) => {
+  return (
+    <Route
+      {...props}
+      render={(props) => authenticated === false
+        ? <Component {...props} />
+        : <Redirect to='/list' />}
+    />
+  );
+};
+
+class App extends React.Component {
   render() {
-    // const {} = this.props
-
     return (
       <ConnectedRouter history={history}>
         <div>
           <Header />
-          <Route exact path='/' component={ListPage} />
-          {/*<Route path='/login' component={Login} />*/}
-          {/*<Route path='/colorboxes' component={ColorBoxes} colors={data} removeBox={this.props.actions.removeColor} rotation={rotation} setRotation={this.props.actions.setRotation}  />*/}
+
+          <div className="container">
+            <Route exact path="/"
+                   render ={ (props) =>
+                   // Take out this bit while developing or you will hate yourself.
+                     <Redirect to='/login'/>
+                     // Use instead
+                     // component = { ListPage }
+                   }
+            />
+            <PublicRoute authenticated={this.props.authenticated }
+                         path="/login" component={ Login } />
+            <PrivateRoute authenticated={this.props.authenticated }
+                          path="/list" component={ ListPage } />
+          </div>
         </div>
       </ConnectedRouter>
     );
-  };
-}
-
-function mapStateToProps(state) {
-  return {
-
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(Actions, dispatch)
-  };
-}
+const mapStateToProps = (state) => {
+  return { authenticated: state.auth.authenticated };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
