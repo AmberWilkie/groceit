@@ -7,8 +7,6 @@ import FullList from '../components/FullList'
 
 class EditRecipe extends React.Component {
 
-
-
   render () {
     const thisRecipe = this.props.recipes.find( (recipe) => {
       return recipe.id === parseInt(this.props.match.params.recipeId)

@@ -44,9 +44,12 @@ const initialState = fakeRecipes;
 export default function fakerecipes (state = initialState, action) {
   switch (action.type) {
     case REMOVE_RECIPE_ITEM:
-      return state;
+      console.log(action.payload);
+      console.log(state);
+      // We're going to have to have a different method for this -
+      // recipes and items are on differnet "levels" of their respective objects.
+      return state.filter((recipe) => recipe.id !== action.payload );
     default:
-      console.log('anything?')
 
       return state
   }
