@@ -2,7 +2,6 @@ import { ADD_ITEM, REQUEST_LIST } from '../actions';
 
 const initialState = {}
 
-
 export default function list (state = initialState, action) {
   switch (action.type) {
     case ADD_ITEM:
@@ -11,7 +10,7 @@ export default function list (state = initialState, action) {
         items: [...state.items, action.payload]
       }
     case REQUEST_LIST:
-      console.log("here we'll make the request for items from the server");
+      // here we'll make the request for items from the server
       return {
         ...state
       }

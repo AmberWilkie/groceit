@@ -8,18 +8,20 @@ import FullList from '../components/FullList'
 
 class ListPage extends React.Component {
   componentDidMount() {
-    this.props.actions.requestList();
+    if (this.props.items === []) {
+      this.props.actions.requestList();
+    }
   }
 
   render () {
     return (
-      <FullList items={this.props.items}/>
+      <FullList items={this.props.items} removeItem={this.props.actions.removeItem}/>
     )
   }
 }
 function mapStateToProps (state) {
   return {
-    items: state.fakeList
+    items: state.items.items
   }
 }
 

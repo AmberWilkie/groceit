@@ -7,7 +7,7 @@ import Auth from './auth';
 
 const rootReducer = combineReducers({
   auth: Auth,
-  fakeList: FakeList,
+  items: FakeList,
   form: FormReducer,
   list: ListReducer,
   router: routerReducer

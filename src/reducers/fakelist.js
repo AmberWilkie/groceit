@@ -1,5 +1,7 @@
-export default function() {
-  return [
+import { REMOVE_ITEM } from '../actions'
+
+const initialState = {
+  items: [
     {
       id: 1,
       name: 'Tomatoes',
@@ -18,5 +20,30 @@ export default function() {
       quantity: 1,
       category: 'Dairy'
     }
-  ];
+  ]
+}
+
+export default function fakelist (state = initialState, action) {
+  switch (action.type) {
+    case REMOVE_ITEM:
+
+      let filteredItems
+      if (state.items) {
+        filteredItems = state.items.filter((item) => {
+          if (item.id !== action.payload) {
+            return item
+          }
+        })
+      } else {
+        filteredItems = []
+      }
+
+      return {
+        ...state,
+        items: filteredItems
+      }
+
+    default:
+      return state
+  }
 }
