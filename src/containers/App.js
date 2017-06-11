@@ -40,12 +40,12 @@ class App extends React.Component {
 
           <div className="container">
             <Route exact path="/"
-                   render ={ (props) =>
+                   //render ={ (props) =>
                    // Take out this bit while developing or you will hate yourself.
-                     <Redirect to='/login'/>
+                     //<Redirect to='/login'/>
                      // Use instead
-                     // component = { ListPage }
-                   }
+                     component = { ListPage }
+
             />
             <PublicRoute authenticated={this.props.authenticated }
                          path="/login" component={ Login } />
