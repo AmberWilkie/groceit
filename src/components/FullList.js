@@ -1,8 +1,8 @@
-import React from 'react';
-import ListItem from './ListItem';
+import React from 'react'
+import ListItem from './ListItem'
 
 const FullList = (props) => {
-  const itemMap = props.items.map( (item) => {
+  const itemMap = props.items.map((item) => {
     return <ListItem key={item.id} {...item}/>
   })
 
@@ -13,4 +13,4 @@ const FullList = (props) => {
   )
 }
 
-export default FullList;
+export default FullList

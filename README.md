@@ -1,6 +1,6 @@
 ### Dependencies
 ```
-npm install --save react-modal redux react-redux redux-promise redux-form react-router-dom react-router-redux@next react-bootstrap
+npm install --save react-modal redux react-redux redux-promise redux-form react-router-dom react-router-redux@next react-bootstrap react-router-bootstrap
 ```
 
 ### Notes

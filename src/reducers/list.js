@@ -1,9 +1,7 @@
-import { ADD_ITEM } from '../actions';
+import { ADD_ITEM, REQUEST_LIST } from '../actions';
 
-const initialState = {
-  data: [],
-  rotation: '90'
-}
+const initialState = {}
+
 
 export default function list (state = initialState, action) {
   switch (action.type) {
@@ -11,6 +9,11 @@ export default function list (state = initialState, action) {
       return {
         ...state,
         items: [...state.items, action.payload]
+      }
+    case REQUEST_LIST:
+      console.log("here we'll make the request for items from the server");
+      return {
+        ...state
       }
     default:
       return state;

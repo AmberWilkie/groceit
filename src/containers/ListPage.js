@@ -1,21 +1,32 @@
 import React from 'react'
-import FakeList from '../reducers/fakelist'
-import FullList from '../components/FullList'
+import * as Actions from '../actions';
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 
-const items = FakeList()
+import FullList from '../components/FullList'
 
-class Header extends React.Component {
+
+class ListPage extends React.Component {
+  componentDidMount() {
+    this.props.actions.requestList();
+  }
+
   render () {
-
     return (
-      <FullList items={items}/>
+      <FullList items={this.props.items}/>
     )
   }
 }
 function mapStateToProps (state) {
   return {
-    authenticated: state.auth.authenticated
+    items: state.fakeList
   }
 }
-export default connect(mapStateToProps)(Header)
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Actions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListPage);
