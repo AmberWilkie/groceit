@@ -1,9 +1,10 @@
 import React from 'react';
 
 const ListItem = (item) => {
-  console.log(item);
   return (
-      <li className="list-group-item">{item.name}</li>
+      <li className="list-group-item">
+        {item.quantity > 1 && item.quantity} {item.name}
+      </li>
     )
 }
 
