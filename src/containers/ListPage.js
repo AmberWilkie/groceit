@@ -14,6 +14,7 @@ class ListPage extends React.Component {
   }
 
   render () {
+    console.log('ListPage items: ', this.props.items);
     return (
       <FullList items={this.props.items} removeItem={this.props.actions.removeItem}/>
     )
@@ -21,7 +22,7 @@ class ListPage extends React.Component {
 }
 function mapStateToProps (state) {
   return {
-    items: state.items.items
+    items: state.items
   }
 }
 

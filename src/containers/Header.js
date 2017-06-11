@@ -18,8 +18,8 @@ class Header extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1} href="#">Link</NavItem>
-            <NavItem eventKey={2} href="#">Link</NavItem>
+            <NavItem eventKey={1} href="/recipes">Recipes</NavItem>
+            <NavItem eventKey={2} href="/items">Items</NavItem>
           </Nav>
           <Nav pullRight>
             <LinkContainer to='/login'>

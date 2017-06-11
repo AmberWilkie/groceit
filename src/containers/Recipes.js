@@ -1,18 +1,34 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import * as Actions from '../actions';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 
-class Header extends React.Component {
-  render() {
+import RecipeList from '../components/RecipeList';
+
+class Recipes extends React.Component {
+  // componentDidMount() {
+  //   if (this.props.items === []) {
+  //     this.props.actions.requestRecipes();
+  //   }
+  // }
+
+  render () {
+    console.log('Recipes: ', this.props.recipes);
     return (
-      <div>
-        Recipes page.
-      </div>
-    );
+      <RecipeList recipes={this.props.recipes} editRecipe={this.props.actions.editRecipe}/>
+    )
   }
 }
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
-    authenticated: state.auth.authenticated
+    recipes: state.recipes
   }
 }
-export default connect(mapStateToProps)(Header);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Actions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

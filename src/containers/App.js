@@ -8,6 +8,8 @@ import Header from '../containers/Header';
 import Login from '../containers/Login';
 import ListPage from '../containers/ListPage';
 import Recipes from '../containers/Recipes';
+import Items from '../containers/Items';
+import EditRecipe from './EditRecipe';
 
 const PrivateRoute = ({component: Component, authenticated, ...props}) => {
   return (
@@ -49,6 +51,12 @@ class App extends React.Component {
             />
             <PublicRoute authenticated={this.props.authenticated }
                          path="/login" component={ Login } />
+            <PublicRoute authenticated={this.props.authenticated }
+                         path="/recipes" component={ Recipes } />
+            <PublicRoute authenticated={this.props.authenticated }
+                         path="/editrecipe/:recipeId" component={ EditRecipe } />
+            <PublicRoute authenticated={this.props.authenticated }
+                         path="/items" component={ Items } />
             <PrivateRoute authenticated={this.props.authenticated }
                           path="/list" component={ ListPage } />
           </div>

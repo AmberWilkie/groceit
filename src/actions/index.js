@@ -3,6 +3,7 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
 export const REQUEST_LIST = 'REQUEST_LIST';
+export const REMOVE_RECIPE_ITEM = 'EDIT_RECIPE';
 
 export function addItem(item) {
   return {
@@ -33,5 +34,12 @@ export function signOut() {
 export function requestList() {
   return {
     type: REQUEST_LIST
+  }
+}
+
+export function removeRecipeItem(recipe) {
+  return {
+    type: REMOVE_RECIPE_ITEM,
+    payload: recipe
   }
 }
